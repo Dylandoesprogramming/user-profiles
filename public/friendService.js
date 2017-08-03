@@ -1,13 +1,18 @@
 angular.module('userProfiles')
-.service('friendService', function( $http ) {
-  
-    
-    this.login = function( user ) {
-      /* FIX ME */
-    };
+    .service('friendService', function($http) {
 
-    this.getFriends = function() {
-    	/* FIX ME */
-    };
-  
-});
+
+        this.login = function(user) {
+            /* FIX ME */
+            return $http.post('/api/login', user);
+        };
+
+        this.getFriends = function() {
+            /* FIX ME */
+            return $http.get('/api/profiles').then(function(response) {
+                console.log(response);
+                return response.data;
+            });
+        };
+
+    });
